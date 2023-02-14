@@ -6,7 +6,6 @@ import java.util.Date;
 public class Exit_Empolyee extends staff implements Serializable{
     fileManager FM=new fileManager();
     public static ArrayList<ticket> Tickets = new ArrayList<>();
-    public final String ExitEmployeeFile = "ExitEmployee.bin";
     public static ArrayList<Exit_Empolyee> ExitEmployees = new ArrayList<>();
     public Exit_Empolyee() {
  
@@ -17,7 +16,7 @@ public class Exit_Empolyee extends staff implements Serializable{
     }
 
     public ArrayList<Exit_Empolyee> ViewOperatorExit(){    
-        return (ArrayList<Exit_Empolyee>) FM.read(ExitEmployeeFile);
+        return (ArrayList<Exit_Empolyee>) FM.read(AppSettings.ExitEmployeeFile);
     }
 
     public long CalculateTotalParkingFees(String plate) {
@@ -49,29 +48,29 @@ public class Exit_Empolyee extends staff implements Serializable{
     }
      
     public boolean addExitEmpolyee(){ 
-        if((ArrayList<Exit_Empolyee>) FM.read(ExitEmployeeFile)!=null){
-            ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(ExitEmployeeFile);
+        if((ArrayList<Exit_Empolyee>) FM.read(AppSettings.ExitEmployeeFile)!=null){
+            ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(AppSettings.ExitEmployeeFile);
         }
         ExitEmployees.add(this);
-        return FM.write(ExitEmployeeFile, ExitEmployees);
+        return FM.write(AppSettings.ExitEmployeeFile, ExitEmployees);
     }
          
     public boolean updateExEmployee(int oldID,Exit_Empolyee emp) {
-        ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(ExitEmployeeFile);
+        ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(AppSettings.ExitEmployeeFile);
         int x = getExitEmployee(oldID);
         if (x != -1) {
             ExitEmployees.set(x, emp);  
-            return FM.write(ExitEmployeeFile,ExitEmployees );
+            return FM.write(AppSettings.ExitEmployeeFile,ExitEmployees );
         }
        return false;
     }
         
     public boolean deleteExEmployee(int id) {
-        ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(ExitEmployeeFile);
+        ExitEmployees = (ArrayList<Exit_Empolyee>) FM.read(AppSettings.ExitEmployeeFile);
         int x = getExitEmployee(id);
         if (x != -1) {
             ExitEmployees.remove(x);
-            return FM.write(ExitEmployeeFile, ExitEmployees);
+            return FM.write(AppSettings.ExitEmployeeFile, ExitEmployees);
         }
 
         return false;

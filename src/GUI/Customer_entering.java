@@ -19,7 +19,7 @@ import java.util.Date;
 public class Customer_entering extends javax.swing.JFrame {
 
     int mouX,mouY;
-    Place_car pc = new Place_car();
+    Place_car pc = new Place_car(this);
     SpotsMap fm = new SpotsMap();
     fileManager FM=new fileManager();
     ticket t = new ticket();
@@ -30,6 +30,11 @@ public class Customer_entering extends javax.swing.JFrame {
     public Customer_entering() {
         initComponents();
         setIcon();
+        Render_spots();
+    }
+    
+    public void Render_spots() {
+        fm.dispose();
         SpotsDraw d = new SpotsDraw(fm);
         ArrayList<spot> sl = new ArrayList<>();
             sl = (ArrayList<spot>) FM.read("spots.bin");
@@ -146,6 +151,11 @@ public class Customer_entering extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(204, 0, 0));
         jButton2.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -249,6 +259,10 @@ public class Customer_entering extends javax.swing.JFrame {
     private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
         this.setState(Customer_entering.ICONIFIED);
     }//GEN-LAST:event_miniMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

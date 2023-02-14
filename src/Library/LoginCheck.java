@@ -6,7 +6,7 @@ public class LoginCheck implements Serializable{
     public LoginCheck(){
         
     }
-    public static boolean Check_admim(String user,String pass){
+    public static boolean Check_admin(String user,String pass){
         if(user.equals("Admin")&&pass.equals("Password")){
             return true;
         }
@@ -25,7 +25,7 @@ public class LoginCheck implements Serializable{
     public static boolean Check_Entry(String user,String pass){
         ArrayList<Entry_Empolyee> alx = new ArrayList<Entry_Empolyee>();
         alx = (ArrayList<Entry_Empolyee>) FM.read("EntryEmployee.bin");
-        for(int i=0;i<=alx.size();i++){
+        for(int i=0;i<alx.size();i++){
             if(alx.get(i).getUserName().equals(user)&&alx.get(i).getPassword().equals(pass)){
                 return true;
             }

@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Entry_Empolyee extends staff implements Serializable{
     fileManager FM=new fileManager();
-    public final String EntryEmployeeFile = "EntryEmployee.bin";
     public static ArrayList<Entry_Empolyee> EntryEmployees = new ArrayList<>();
     public Entry_Empolyee() {
         
@@ -26,10 +25,10 @@ public class Entry_Empolyee extends staff implements Serializable{
     public void setSpotToTicket(String SpotName) {
         spot s= new spot ();
         ArrayList <spot> spots = new ArrayList<>();
-        spots = (ArrayList < spot >) FM.read(s.spotFile);
+        spots = (ArrayList < spot >) FM.read(AppSettings.SpotFile);
         int i=s.searchSpots(SpotName);
         spots.get(i).setState(false);
-        FM.write(s.spotFile, spots);
+        FM.write(AppSettings.SpotFile, spots);
     }
     
     public int getEntryEmployee(int id) {
@@ -42,29 +41,29 @@ public class Entry_Empolyee extends staff implements Serializable{
         }
     
     public boolean addEntryEmpolyee() {  
-        if((ArrayList<Entry_Empolyee>) FM.read(EntryEmployeeFile)!=null){
-            EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(EntryEmployeeFile);
+        if((ArrayList<Entry_Empolyee>) FM.read(AppSettings.EntryEmployeeFile)!=null){
+            EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(AppSettings.EntryEmployeeFile);
         }
         EntryEmployees.add(this);
-        return FM.write(EntryEmployeeFile, EntryEmployees);
+        return FM.write(AppSettings.EntryEmployeeFile, EntryEmployees);
     }
 
     public boolean updateEnEmployee(int oldID,Entry_Empolyee emp) {
-        EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(EntryEmployeeFile);
+        EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(AppSettings.EntryEmployeeFile);
         int x = getEntryEmployee(oldID);
         if (x != -1) {
             EntryEmployees.set(x, emp);  
-            return FM.write(EntryEmployeeFile,EntryEmployees );
+            return FM.write(AppSettings.EntryEmployeeFile,EntryEmployees );
         } 
        return false;
     }
    
     public boolean deleteEnEmployee(int id) {
-        EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(EntryEmployeeFile);
+        EntryEmployees = (ArrayList<Entry_Empolyee>) FM.read(AppSettings.EntryEmployeeFile);
         int x = getEntryEmployee(id);
         if (x != -1) {
             EntryEmployees.remove(x);
-            return FM.write(EntryEmployeeFile, EntryEmployees);
+            return FM.write(AppSettings.EntryEmployeeFile, EntryEmployees);
         }
         return false;
     }

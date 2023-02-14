@@ -3,7 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/Entry_Empolyee.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/project2/Core.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/spot.java</file>
             <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/staff.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/Customer_entering.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/Login.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/Ticket.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/SpotsDraw.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/LoginCheck.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/SpotsMap.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/ticket.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/Exit_Empolyee.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/GUI/Place_car.java</file>
+            <file>file:/D:/MyProjects/Java/Parking%20Guidance%20System/src/Library/AppSettings.java</file>
         </group>
     </open-files>
 </project-private>

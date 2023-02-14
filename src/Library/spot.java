@@ -6,7 +6,6 @@ public class spot implements Serializable {
     private int y;
     private boolean state;
     private String SpotName;
-    public final String spotFile = "spots.bin";
     fileManager FM=new fileManager();
     public static ArrayList<spot> spots = new ArrayList<>();
     public spot() {
@@ -56,7 +55,7 @@ public class spot implements Serializable {
     public ArrayList<spot> freeSpots() {
         ArrayList<spot> freeSpots = new ArrayList<>();
 
-        spots = (ArrayList<spot>) FM.read(spotFile);
+        spots = (ArrayList<spot>) FM.read(AppSettings.SpotFile);
         for (spot Spot : spots) {
             if (Spot.isState()) {
                 freeSpots.add(Spot);
@@ -66,34 +65,37 @@ public class spot implements Serializable {
     }
       
     public boolean saveSpot() {
-        if((ArrayList<spot>) FM.read(spotFile)!=null){
-            spots = (ArrayList<spot>) FM.read(spotFile);
+        if((ArrayList<spot>) FM.read(AppSettings.SpotFile)!=null){
+            spots = (ArrayList<spot>) FM.read(AppSettings.SpotFile);
         }
         spots.add(this);
-        return FM.write(spotFile, spots);
+        return FM.write(AppSettings.SpotFile, spots);
     }
 
     public ArrayList<spot> viewSpots() {
-        return spots = (ArrayList<spot>) FM.read (spotFile);
+        return spots = (ArrayList<spot>) FM.read (AppSettings.SpotFile);
         
     }
+    
     public int searchSpots(String SpotName){
-        
-         for (int i = 0; i < spots.size(); i++) {
-            if (spots.get(i).getSpotName() .equals (SpotName)) {
+        for (int i = 0; i < spots.size(); i++) {
+            if (spots.get(i).getSpotName().equals(SpotName)) {
                 return i;
             }
         }
-            return -1;
-     }
+        return -1;
+    }
+    
     void exitSpot(String SpotN)
     { 
         spot s=new spot();
-        int i=searchSpots(SpotN);
-        s=spots.get(i);
-        s.setState(true);  
-        spots.set(i,s);
-        FM.write(spotFile, spots);
+        int i = searchSpots(SpotN);
+        if (i > 0){
+            s=spots.get(i);
+            s.setState(true);  
+            spots.set(i,s);
+            FM.write(AppSettings.SpotFile, spots);
+        }
     }
    
 }

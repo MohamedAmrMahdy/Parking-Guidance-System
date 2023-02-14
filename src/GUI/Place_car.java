@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Library.AppSettings;
 import Library.fileManager;
 import Library.spot;
 import Library.ticket;
@@ -25,6 +26,7 @@ public class Place_car extends javax.swing.JFrame {
     private int mouX;
     private int mouY;
     fileManager FM=new fileManager();
+    private Customer_entering mainCE;
     protected void cancel(){
         IDField.setText("");
         PlateNumField.setText("");
@@ -32,10 +34,16 @@ public class Place_car extends javax.swing.JFrame {
         SpotField.setText("");
         setVisible(false);
     }
+    
     /**
      * Creates new form Place_car
      */
     public Place_car() {
+        initComponents();
+        setIcon();
+    }
+    public Place_car(Customer_entering pc) {
+        mainCE = pc;
         initComponents();
         setIcon();
     }
@@ -250,7 +258,7 @@ public class Place_car extends javax.swing.JFrame {
         
         int spotid =0;
         ArrayList<spot> sl = new ArrayList<>();
-        sl = (ArrayList<spot>) FM.read(searchspot.spotFile);
+        sl = (ArrayList<spot>) FM.read(AppSettings.SpotFile);
         for(int i =0;i<sl.size();i++){
             if (sl.get(i).getSpotName() .equals (Spot)) {
                 spotid=i;
@@ -260,7 +268,9 @@ public class Place_car extends javax.swing.JFrame {
         sl.remove(spotid);
         temp.setState(false);
         sl.add(temp);
-        FM.write(searchspot.spotFile, sl);
+        FM.write(AppSettings.SpotFile, sl);
+        
+        mainCE.Render_spots();
         cancel();
     }//GEN-LAST:event_PlaceBtnMouseClicked
 

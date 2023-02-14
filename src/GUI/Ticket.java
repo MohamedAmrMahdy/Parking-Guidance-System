@@ -38,7 +38,7 @@ public class Ticket extends javax.swing.JFrame {
         String Datestart = sdf.format(start);
         String Dateend = sdf.format(end);
         Exit_Empolyee ex = new Exit_Empolyee();
-        long timeinms = ex.CalculateTotalParkingFees(Plate);
+        long timeinms = ex.CalculateTotalParkingFees(Plate) + 10000;
         int seconds = (int) (timeinms / 1000) % 60 ;
         int minutes = (int) ((timeinms / (1000*60)) % 60);
         int hours   = (int) ((timeinms / (1000*60*60)) % 24);
